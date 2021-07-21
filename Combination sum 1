@@ -1,0 +1,33 @@
+class Solution {
+    int target;
+    List<List<Integer>> ans = new ArrayList<>();
+    
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        
+        this.target = target;
+        
+        int n = candidates.length;
+        
+        getans(candidates , 0  , new ArrayList<>() , n , 0);
+        
+        return ans;
+    }
+    void getans(int[] candidates , int sum , List<Integer> temp , int n , int i){
+        
+        if(sum == target){
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+        
+        for(int j = i ; j < n ; j++){
+            int nsum = candidates[j] + sum;
+            if(sum <= target){
+                temp.add(candidates[j]);
+                getans(candidates , nsum , temp , n , j);
+                temp.remove(temp.size() - 1);
+            }
+        }
+
+    }
+    
+}
