@@ -1,0 +1,25 @@
+class Solution {
+	
+	void bt(int[] A, int n, int idx, int val, List<Integer> set, int sum, 
+		   List<List<Integer>> result) {
+		if(sum > val)	return;
+		if(sum == val)	{
+			result.add(new ArrayList<>(set));
+			return;
+		}
+		
+		for(int i=idx; i<n; i++) {
+			if(i != idx && A[i] == A[i-1])	continue;
+			set.add(A[i]);
+			bt(A, n, i+1, val, set, sum+A[i], result);
+			set.remove(set.size()-1);
+		}
+	}
+	
+	List<List<Integer>> combinationSum2(int[] A, int val) {
+		Arrays.sort(A);
+		List<List<Integer>> result = new ArrayList<>();
+		bt(A, A.length, 0, val, new ArrayList<>(), 0, result);
+		return result;
+	}
+}
