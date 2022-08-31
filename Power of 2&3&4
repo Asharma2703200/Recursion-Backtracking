@@ -1,0 +1,70 @@
+//power of 4
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        //sol 1
+        // while(n>1){
+        //     if(n%4!=0)return false;
+        //     n=n/4;
+        // }
+        // return n==1;
+        
+        //sol2
+        int ans = check(n);
+        return ans==-1?false:true;
+    }
+    int check(int n){
+        int rem = n% 4;
+        if(n==0) return -1;
+        if(n==1) return 1;
+        if(rem==0) return check(n/4);
+        return -1;
+    }
+}
+
+
+//power of 3
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        // while(n>1){
+        //     if(n%3!=0)return false;
+        //     n/=3;
+        // }
+        // return n==1;
+        
+        int ans = check(n);
+        return ans==-1?false:true;
+    }
+    public int check(int n){
+        if(n==0)return -1;
+        if(n==1)return 1;
+        int rem = n%3;
+        if(rem==0){
+            return check(n/3);
+        }
+        return -1;
+    }
+}
+
+
+//power of 2
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        // while(n>1){
+        //     if(n%3!=0)return false;
+        //     n/=3;
+        // }
+        // return n==1;
+        
+        int ans = check(n);
+        return ans==-1?false:true;
+    }
+    public int check(int n){
+        if(n==0)return -1;
+        if(n==1)return 1;
+        int rem = n%2;
+        if(rem==0){
+            return check(n/2);
+        }
+        return -1;
+    }
+}
