@@ -1,0 +1,27 @@
+class Solution {
+    List<List<Integer>> ans = new ArrayList<>();
+    public List<List<Integer>> permute(int[] nums) {
+        recursion(0 , nums);
+        return ans;
+    }
+    void recursion(int i , int[] nums){
+        if(i == nums.length){
+            List<Integer> sa = new ArrayList<>();
+            for(int val : nums){
+                sa.add(val);
+            }
+            ans.add(sa);
+            return;
+        }
+        for(int v = i ; v< nums.length;v++){
+            swap(v , i , nums);
+            recursion(i+1 , nums);
+            swap(v , i , nums);
+        }
+    }
+    void swap(int i , int j , int[] nums){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
